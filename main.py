@@ -1,6 +1,6 @@
 import json
 import requests
-import wikipedia
+
 url = 'https://ru.wikipedia.org/wiki/'
 with open('countries.json') as json_file:
     data = json.load(json_file)
@@ -19,7 +19,7 @@ class Countries_iterator:
         item = self.list_of_countries[self.country_index]
         if self.country_index != len(self.list_of_countries):
             with open('doc.txt', 'a', encoding='utf-8') as file:
-                file.write(f' {wikipedia.page(wikipedia.search(item)[0]).links} - {item["name"]["common"]} \n')
+                file.write(f' {url + item["name"]["common"]} - {item["name"]["common"]} \n')
             self.country_index += 1
         else:
             raise StopIteration
